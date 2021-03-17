@@ -5,6 +5,7 @@ module QueryInput = {
   let make = (~content, ~setContent) => {
   let (word, setWord) = React.useState(_ => content)
 
+  // let onClick = _evt => setContent (_ => word)
   let onSubmit = _evt => {
     ReactEvent.Form.preventDefault(_evt)
     setContent (_ => word)
@@ -14,8 +15,8 @@ module QueryInput = {
 
   <div className="query-input">
     <form onSubmit>
-      <input type_="text" value = {word} onChange /> 
-      <button type_="submit"> {React.string("QUERY")} </button>
+    <input type_="text" value = {word} onChange /> 
+    <button type_="submit"> {React.string("QUERY")} </button>
     </form>
   </div>
   }
@@ -23,6 +24,6 @@ module QueryInput = {
 
 @react.component
 let make = () => {
-  let (content, setContent) = React.useState(_ => "best")
+  let (content, setContent) = React.useState(_ => "")
   <div className="App"> <QueryInput content setContent/> <p /> <Content content /> </div>
 }
