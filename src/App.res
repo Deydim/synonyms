@@ -1,7 +1,5 @@
 %%raw(`import './App.css';`)
 
-@bs.module("./logo.svg") external logo: string = "default"
-
 module Button = {
   @react.component
   let make = () => {
@@ -20,5 +18,6 @@ let make = () => {
   <div className="App">
     <QueryInput />
     <Button />
+    <Content />
   </div>
 }
