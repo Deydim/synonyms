@@ -1,14 +1,55 @@
+html, body
+{
+  height: 100%;
+}
+
+#root{
+  height: 100%;
+}
+
 .App {
+  height: 100%;
   background-color: #282c34;
-  display: block;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: 10px + calc(2vmin);
+  color: white;  
 }
 
-.App-link {
-  color: #61dafb;
+td {
+  height: 100%;
+  /* border-left: solid white 1px; */
+  /* border-bottom: solid white 1px; */
+  /*border-radius: 10px; */
+  vertical-align: top;
+  text-align: right;
+  /* border-right: solid white 1px; */
+  /* border: solid orange 1px; */
 }
 
-.content {
-  display: block;
+.last {
+  text-align: left;
+}
+
+table {
+  width: fit-content;
+  height: 100%;
+  /* border: solid white 1px; */
+  border-collapse: collapse;
+}
+
+tr {
+  height: 100%;
+}
+.bordered {
+  /* border-left: solid white 1px;
+  border-bottom: solid white 1px; */
+  /* border: solid white 1px; */
+ 
+}
+
+.svg {
+  width: 20px;
+  height: 50%;
+  overflow: visible;
 }
