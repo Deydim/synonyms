@@ -2,6 +2,7 @@
     {
         "normalizedSource": "test",
         "displaySource": "test",
+        "translations1": [],
         "translations": [
             {
                 "normalizedTarget": "prueba",

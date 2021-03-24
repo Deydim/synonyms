@@ -1,12 +1,12 @@
 
   @react.component
   let make = (~translatedWords: array<string>, ~depth: int) => {
-    let lineOffset = 100 / translatedWords->Array.length + 1
+    // let lineOffset = 100 / translatedWords->Array.length + 1
     
           let y2: string = 
             translatedWords
               ->Array.length  
-              -> \"*"(100 * (translatedWords->Array.length-depth + 1) / Js.Math.pow_int (~base= (translatedWords->Array.length), ~exp=depth))  
+              -> \"*"(100 * (translatedWords->Array.length-depth + 1) / Belt.Float.toInt(Js.Math.pow_float (~base= Belt.Int.toFloat(translatedWords->Array.length), ~exp=Belt.Int.toFloat(depth))))  
               ->Belt.Int.toString  ++ "%"
 
           Js.log(y2);

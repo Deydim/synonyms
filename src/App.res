@@ -1,8 +1,42 @@
-%%raw(`import './App.css';`)
-%%raw(`import testJson from './testJson.json';
+%%raw(` import './App.css';
+        import testJson from './testJson.json';
       `)
 
-@val external testJson: ResponseSchema.lookupResult = "testJson"
+@val external testJson: ResponseSchema.result = "testJson"
+
+Js.log(testJson[0].translations)
+open Belt
+
+let test = switch testJson[0] {
+  | Some(trans) => trans
+}
+
+switch test.translations[0] {
+  | Some(trans) => Js.log("success")
+  | None => Js.log("fail")
+}
+
+
+let maybeArr = (optArr ) => 
+  switch optArr {
+      | Some (trans) => trans
+      // | None (trans) => trans
+    }
+
+
+
+// let getProp = (record, accessor) => accessor(record)
+
+//  let extractNonEmptyArray = (arr, accessor) => Array.get(arr, 0)->maybeArr->getProp(accessor)
+
+
+// Js.log(testJson->Array.get(0)->maybeArr->getProp(obj => obj["translations"])->extractNonEmptyArray("backTranslations"))
+
+
+// Js.log(testJson->Array.get(0)->maybeArr->getProp(obj => obj.translations)->Array.get(0)->maybeArr->getProp(obj=>obj.backTranslations) )
+
+// Js.log(testJson->extractNonEmptyArray(record => record.translations)->extractNonEmptyArray(record => record.backTranslations))
+
 
 module QueryInput = {
   @react.component
@@ -29,6 +63,6 @@ let make = () => {
   let depth = 0
   let (content, setContent) = React.useState(_ => "myWord")
   <div className="App">
-    <QueryInput content setContent /> <p /> <table> <Content content depth /> </table>
+    <QueryInput content setContent /> <p /> <table> <Content content depth key=Belt.Int.toString(depth)/> </table>
   </div>
 }
