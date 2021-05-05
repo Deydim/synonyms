@@ -1,38 +1,63 @@
-module type ContentType = {
-  let make: {"content": string, "depth": int} => React.element
-  let makeProps: (
-    ~content: string,
-    ~depth: int,
-    ~key: string=?,
-    unit,
-  ) => {"content": string, "depth": int}
+let trace = (el, text) => {
+  Js.log2(text, el)
+  el
 }
 
+type synonymRecord = {
+  synonym: string,
+  confidence: int,
+}
 
-module rec Content: ContentType = {
-  @react.component
-  let make = (~content: string, ~depth: int) => {
-    ["first", "second", "third", "forth", "fifth"]
-    ->Belt.Array.map(word =>
-      switch depth < 2 { 
-      | true =>
-        <tr key={word ++ "1"}>
-          <td key={word ++ "2"}> <span className="bordered"> {React.string(word)} </span> </td>
-          <span> {React.string(`▼`)} </span>
-          <Content content depth={depth + 1} key={word ++ Belt.Int.toString(depth)} />
-          // {React.createElement(make, makeProps(~depth=depth + 1, ~content=word, ()))}
-        </tr>
+let emptyTrans: ResponseSchema.translation = {
+  confidence: 0.,
+  backTranslations: [],
+}
 
-      | false =>
-        //React.null
-        <tr>
-          <td className="last"> <span className="bordered"> {React.string(word)} </span> </td>
-        </tr>
-      }
+open Js.Array2
+// let unwrapOptionArr = (arr: array<ResponseSchema.translation>) =>
+//     switch arr->length {
+//     | 0 => []
+//     | _ => arr
+//     }
+  
+
+let synonymRecordFactory = (trans: ResponseSchema.translation) => {
+  trans.backTranslations->map(backTrans => {
+    {
+      synonym: backTrans.displayText,
+      confidence: (trans.confidence *. backTrans.frequencyCount->Belt.Int.toFloat)
+        ->Belt.Float.toInt,
+    }
+  })
+}
+
+let combineRepetitions = (arr: array<synonymRecord>): array<synonymRecord> =>
+  arr->reduce((acc, item) => {
+    let combinedConfidence =
+      filter(arr, item2 => item2.synonym == item.synonym)->reduce(
+        (acc, item) => {...item, confidence: acc.confidence + item.confidence},
+        {...item, confidence: 0},
+      )
+    acc->concat(acc->some(item => item == combinedConfidence) ? [] : [combinedConfidence])
+  }, [])
+
+@react.component
+let make = (~content: ResponseSchema.sourceWordDescription) => {
+  let result =
+    // unwrapOptionArr(content.translations)
+    content.translations
+    ->reduce((acc, trans) => concat(acc, synonymRecordFactory(trans)), []) // flatten all arrays to one
+    ->filter(el => el.synonym != content.displaySource) // removes source word from data array
+    ->combineRepetitions
+
+  <div>
+    {result
+    ->map(item =>
+      <div key={item.synonym}>
+        <span> {React.string(item.synonym)} </span>
+        <span> {React.string(item.confidence->Belt.Int.toString)} </span>
+      </div>
     )
-    ->React.array
-  }
+    ->React.array}
+  </div>
 }
-
-let make = Content.make
-let makeProps = Content.makeProps
