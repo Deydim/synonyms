@@ -1,58 +1,29 @@
 %%raw(` import './App.css';
-        import testJson from './testJson.json';
       `)
-
-@val external testJson: ResponseSchema.result = "testJson"
-
-Js.log(testJson[0].translations)
-open Belt
-
-let test = switch testJson[0] {
-  | Some(trans) => trans
-}
-
-switch test.translations[0] {
-  | Some(trans) => Js.log("success")
-  | None => Js.log("fail")
-}
-
-
-let maybeArr = (optArr ) => 
-  switch optArr {
-      | Some (trans) => trans
-      // | None (trans) => trans
-    }
-
-
-
-// let getProp = (record, accessor) => accessor(record)
-
-//  let extractNonEmptyArray = (arr, accessor) => Array.get(arr, 0)->maybeArr->getProp(accessor)
-
-
-// Js.log(testJson->Array.get(0)->maybeArr->getProp(obj => obj["translations"])->extractNonEmptyArray("backTranslations"))
-
-
-// Js.log(testJson->Array.get(0)->maybeArr->getProp(obj => obj.translations)->Array.get(0)->maybeArr->getProp(obj=>obj.backTranslations) )
-
-// Js.log(testJson->extractNonEmptyArray(record => record.translations)->extractNonEmptyArray(record => record.backTranslations))
-
 
 module QueryInput = {
   @react.component
-  let make = (~content, ~setContent) => {
-    let (word, setWord) = React.useState(_ => content)
+  let make = (~word, ~setWord) => {
+    let (inputValue, setInputValue) = React.useState(() => word)
     let onSubmit = _evt => {
       ReactEvent.Form.preventDefault(_evt)
-      setContent(_ => word)
+      setWord(_previousState => inputValue)
     }
 
-    let onChange = _evt => setWord(_ => ReactEvent.Form.target(_evt)["value"])
+    let onChange = _evt => setInputValue(_previousState => ReactEvent.Form.target(_evt)["value"])
 
     <div className="query-input">
       <form onSubmit>
-        <input type_="text" value={word} onChange />
+        <input type_="text" value={inputValue} onChange />
         <button type_="submit"> {React.string("Lookup")} </button>
+        <p/>
+        {React.string("Source Lang")} 
+        <input type_ = "button" value ="En" />
+        <input type_ = "button" value ="En" />
+        <p/>
+        {React.string("Target Lang")} 
+        <input type_ = "button" value ="En" />
+        <input type_ = "button" value ="En" />
       </form>
     </div>
   }
@@ -60,9 +31,10 @@ module QueryInput = {
 
 @react.component
 let make = () => {
-  let depth = 0
-  let (content, setContent) = React.useState(_ => "myWord")
+  let (word, setWord) = React.useState(() => "")
   <div className="App">
-    <QueryInput content setContent /> <p /> <table> <Content content depth key=Belt.Int.toString(depth)/> </table>
+    <QueryInput word setWord />
+    <p />
+    <Fetch word />
   </div>
 }
