@@ -37,7 +37,7 @@ let useFetch = (~word) => {
       request->addEventListener("error", () => {
         setState(_previousState => Error)
       })
-      request->open_("GET", `http://localhost:8000/?word=${word}&from=en&to=es`)
+      request->open_("GET", `http://localhost:8000/?word=${word}&from=en&to=de`)
       request->send
     
     Some(() => {request->abort})

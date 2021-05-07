@@ -14,12 +14,6 @@ let emptyTrans: ResponseSchema.translation = {
 }
 
 open Js.Array2
-// let unwrapOptionArr = (arr: array<ResponseSchema.translation>) =>
-//     switch arr->length {
-//     | 0 => []
-//     | _ => arr
-//     }
-  
 
 let synonymRecordFactory = (trans: ResponseSchema.translation) => {
   trans.backTranslations->map(backTrans => {
@@ -44,20 +38,22 @@ let combineRepetitions = (arr: array<synonymRecord>): array<synonymRecord> =>
 @react.component
 let make = (~content: ResponseSchema.sourceWordDescription) => {
   let result =
-    // unwrapOptionArr(content.translations)
     content.translations
     ->reduce((acc, trans) => concat(acc, synonymRecordFactory(trans)), []) // flatten all arrays to one
     ->filter(el => el.synonym != content.displaySource) // removes source word from data array
     ->combineRepetitions
 
-  <div>
-    {result
-    ->map(item =>
-      <div key={item.synonym}>
-        <span> {React.string(item.synonym)} </span>
-        <span> {React.string(item.confidence->Belt.Int.toString)} </span>
-      </div>
-    )
-    ->React.array}
-  </div>
+  switch result->length {
+  | 0 => <div> {React.string("No synonyms found for this word.")} </div>
+  | _ => <>
+      {result
+      ->map(item =>
+        <div key={item.synonym}>
+          <span> {React.string(item.synonym)} </span>
+          <span> {React.string(item.confidence->Belt.Int.toString)} </span>
+        </div>
+      )
+      ->React.array}
+    </>
+  }
 }
