@@ -42,18 +42,11 @@ let make = (~content: ResponseSchema.sourceWordDescription) => {
     ->reduce((acc, trans) => concat(acc, synonymRecordFactory(trans)), []) // flatten all arrays to one
     ->filter(el => el.synonym != content.displaySource) // removes source word from data array
     ->combineRepetitions
+    ->map(item => {...item, confidence: (item.confidence < 800 ? 800 : item.confidence)}) //set minimum font size
 
   switch result->length {
   | 0 => <div> {React.string("No synonyms found for this word.")} </div>
-  | _ => <>
-      {result
-      ->map(item =>
-        <div key={item.synonym}>
-          <span> {React.string(item.synonym)} </span>
-          <span> {React.string(item.confidence->Belt.Int.toString)} </span>
-        </div>
-      )
-      ->React.array}
-    </>
+  | _ => 
+      <Words options={{"list": result->map(item => (item.synonym, item.confidence/50))}}/>   
   }
 }
