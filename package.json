@@ -1,5 +1,6 @@
 {
   "name": "rescript-react-sample-proj",
+  "homepage": "http://deydim.github.io/synonyms",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,7 +23,9 @@
     "postinstall": "bsb -make-world",
     "start:re": "bsb -make-world -w",
     "start:cra": "react-scripts start",
-    "prebuild": "bsb -clean-world -make-world"
+    "prebuild": "bsb -clean-world -make-world",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": null,
   "browserslist": {
@@ -40,5 +43,8 @@
   "resolutions": {
     "react": "0.0.0-experimental-4ead6b530",
     "react-dom": "0.0.0-experimental-4ead6b530"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.0"
   }
 }
