@@ -13,7 +13,7 @@ type response
 type state =
   | NotCalled
   | Loading
-  | Error
+  | Error(unit)
   | BadRequest(string)
   | Loaded(ResponseSchema.result)
 
@@ -22,26 +22,29 @@ let useFetch = (~word) => {
   React.useEffect1(() => {
     switch word {
     | "" => {
-      setState(_previousState => NotCalled)
-      None
+        setState(_previousState => NotCalled)
+        None
       }
     | _ => {
-      setState(_previousState => Loading)
-      let request = makeXMLHttpRequest()
-      request->addEventListener("load", () => {
-        switch Js.String.charAt(1, request->response->stringifyResponse) {
-        | "[" => setState(_previousState => Loaded(request->response->parseResponse))
-        | _ => setState(_previousState => BadRequest(request->response->stringifyResponse))
-        }
-      })
-      request->addEventListener("error", () => {
-        setState(_previousState => Error)
-      })
-      request->open_("GET", `http://localhost:8000/?word=${word}&from=en&to=es`)
-      request->send
-    
-    Some(() => {request->abort})
-  }}}, [word])
-  state
-  }
+        setState(_previousState => Loading)
+        let request = makeXMLHttpRequest()
+        request->addEventListener("load", () => {
+          switch Js.String.charAt(1, request->response->stringifyResponse) {
+          | "[" => setState(_previousState => Loaded(request->response->parseResponse))
+          | _ => setState(_previousState => BadRequest(request->response->stringifyResponse))
+          }
+        })
+        request->addEventListener("error", (err) => {
+          setState(_previousState => Error(err))
+        })
+        // request->open_("GET", `http://localhost:8000/?word=${word}&from=en&to=es`)
+        // request->open_("GET", `https://cors-anywhere.herokuapp.com/https://limitless-temple-03902.herokuapp.com/?word=${word}&from=en&to=es`)
+        request->open_("GET", `https://limitless-temple-03902.herokuapp.com/?word=${word}&from=en&to=es`)
+        request->send
 
+        Some(() => {request->abort})
+      }
+    }
+  }, [word])
+  state
+}

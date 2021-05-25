@@ -18,13 +18,10 @@ html, body
 
 td {
   height: 100%;
-  /* border-left: solid white 1px; */
-  /* border-bottom: solid white 1px; */
-  /*border-radius: 10px; */
+  
   vertical-align: top;
   text-align: right;
-  /* border-right: solid white 1px; */
-  /* border: solid orange 1px; */
+ 
 }
 
 .last {
@@ -34,18 +31,12 @@ td {
 table {
   width: fit-content;
   height: 100%;
-  /* border: solid white 1px; */
+  
   border-collapse: collapse;
 }
 
 tr {
   height: 100%;
-}
-.bordered {
-  /* border-left: solid white 1px;
-  border-bottom: solid white 1px; */
-  /* border: solid white 1px; */
- 
 }
 
 .svg {
@@ -74,7 +65,7 @@ tr {
   position: relative;
   overflow: hidden;
   width: 500px;
-  height: 300px;
+  height: 400px;
 }
 
 .canvas.hide {
@@ -120,3 +111,33 @@ select { width: 100%; }
   0% { opacity: 1; }
   100% { opacity: 0; }
 }
+/* 
+#canvas-container {
+  overflow-x: auto;
+  overflow-y: visible;
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.canvas {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  width: 500px;
+  height: 300px;
+}
+
+.canvas.hide {
+  display: none;
+}
+
+#html-canvas > span {
+  transition: text-shadow 1s ease, opacity 1s ease;
+  -webkit-transition: text-shadow 1s ease, opacity 1s ease;
+  -ms-transition: text-shadow 1s ease, opacity 1s ease;
+}
+
+#html-canvas > span:hover {
+  text-shadow: 0 0 10px, 0 0 10px #fff, 0 0 10px #fff, 0 0 10px #fff;
+  opacity: 0.5;
+} */
