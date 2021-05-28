@@ -213,7 +213,7 @@ var WordCloud = function WordCloud(elements, options) {
       '"Arial Unicode MS", "Droid Fallback Sans", sans-serif',
     fontWeight: "normal",
     color: "random-dark",
-    minSize: 0, // 0 to disable
+    minSize: 1, // 0 to disable
     weightFactor: 1,
     clearCanvas: true,
     backgroundColor: "#fff", // opaque white = rgba(255, 255, 255, 1)

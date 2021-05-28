@@ -42,8 +42,9 @@ let make = (~content: ResponseSchema.sourceWordDescription) => {
     ->reduce((acc, trans) => concat(acc, synonymRecordFactory(trans)), []) // flatten all arrays to one
     ->filter(el => el.synonym != content.displaySource) // removes source word from data array
     ->combineRepetitions
-    ->map(item => {...item, confidence: (item.confidence < 800 ? 800 : item.confidence)}) //set minimum font size
-
+    ->map(item => {...item, confidence: (item.confidence < 700 ? 700 + item.confidence * 10 : item.confidence)}) //set minimum font size
+    ->map(item => {...item, confidence: (item.confidence > 4000 ? 4000 + item.confidence/10 : item.confidence)}) //set maximum font size
+    
   switch result->length {
   | 0 => <div> {React.string("No synonyms found for this word.")} </div>
   | _ => 
