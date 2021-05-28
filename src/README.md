@@ -8,6 +8,6 @@ My idea was to experiment with ReScript and their static type system, functional
 
 The program basically request a word and receives a traslation of it from English to Spanish along with its available backtranslations as well as a confidence value and number of appearances in the bilingual text base. 
 
-What I do is make a couple of data transformations until I have a data structure - 'record' containing elements with a backtranslation to the queried word and derived confidence value (as needed by the word cloud tool, so as to render a meaningful visual presentation).
+What I do is make a couple of data transformations until I have a data structure - array of records containing elements with a backtranslation to the queried word and derived confidence value (as needed by the word cloud tool, so as to render a meaningful visual presentation).
 
 Backend is a simple app hosted on Heroku which connects to Microsoft Cognitive Services and returns JSON with all translations found for the searched word. I have included its source in the 'src/backend' folder for reference.
