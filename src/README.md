@@ -1,6 +1,6 @@
 Working demo here: https://deydim.github.io/synonyms/
 
-A ReScript React experimental project.
+A ReScript React experimental project for searching synonyms of a word.
 
 A simple interface with a controlled text input and a confirm button. The results are displayed in a word cloud for which I am using a 3rd party library called wordcloud2.js (https://github.com/timdream/wordcloud2.js) which, in turn, is itself based on the more popular Wordle, written in Java.
 
