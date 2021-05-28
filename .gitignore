@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Reason, ReScript
-/examples
+/src/examples
 /lib/bs
 .merlin
 .bsb.lock
