@@ -44,6 +44,7 @@ let make = (~content: ResponseSchema.sourceWordDescription) => {
     ->combineRepetitions
     ->map(item => {...item, confidence: (item.confidence < 700 ? 700 + item.confidence * 10 : item.confidence)}) //set minimum font size
     ->map(item => {...item, confidence: (item.confidence > 4000 ? 4000 + item.confidence/10 : item.confidence)}) //set maximum font size
+    ->map(item => {...item, confidence: (item.confidence > 7000 ? 4000 : item.confidence)}) //set maximum font size
     
   switch result->length {
   | 0 => <div> {React.string("No synonyms found for this word.")} </div>

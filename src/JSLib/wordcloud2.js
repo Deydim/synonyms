@@ -216,7 +216,8 @@ var WordCloud = function WordCloud(elements, options) {
     minSize: 1, // 0 to disable
     weightFactor: 1,
     clearCanvas: true,
-    backgroundColor: "#fff", // opaque white = rgba(255, 255, 255, 1)
+    backgroundColor: "azure", // opaque white = rgba(255, 255, 255, 1)
+    // backgroundColor: "#fff", // opaque white = rgba(255, 255, 255, 1)
 
     gridSize: 20,
     drawOutOfBound: false,

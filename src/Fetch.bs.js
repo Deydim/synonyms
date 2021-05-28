@@ -10,7 +10,7 @@ function Fetch(Props) {
   var state = Network$MyRescriptApp.useFetch(word);
   if (typeof state === "number") {
     if (state === /* NotCalled */0) {
-      return React.createElement("div", undefined, "Please enter word");
+      return React.createElement("div", undefined, "Please enter word. For rich results try something obscene, e.g. the F word :)");
     } else {
       return React.createElement("div", undefined, "Loading...");
     }

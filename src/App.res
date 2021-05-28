@@ -13,6 +13,11 @@ module QueryInput = {
     let onChange = _evt => setInputValue(_previousState => ReactEvent.Form.target(_evt)["value"])
 
     <div className="query-input">
+      <h5>
+        {React.string("Just a synonyms' generator at best (and hopefully a semantic cloud at its worst).")}
+        <br />
+        {React.string("Also, please excuse my 1995 background color :)")}
+      </h5>
       <form onSubmit>
         <input type_="text" value={inputValue} onChange />
         <button type_="submit"> {React.string("Lookup")} </button>

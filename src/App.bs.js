@@ -28,7 +28,7 @@ function App$QueryInput(Props) {
   };
   return React.createElement("div", {
               className: "query-input"
-            }, React.createElement("form", {
+            }, React.createElement("h5", undefined, "Just a synonyms' generator at best (and hopefully a semantic cloud at its worst).", React.createElement("br", undefined), "Also, please excuse my 1995 background color :)"), React.createElement("form", {
                   onSubmit: onSubmit
                 }, React.createElement("input", {
                       type: "text",

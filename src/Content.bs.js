@@ -47,18 +47,23 @@ function combineRepetitions(arr) {
 function Content(Props) {
   var content = Props.content;
   var result = combineRepetitions(content.translations.reduce((function (acc, trans) {
-                    return acc.concat(synonymRecordFactory(trans));
-                  }), []).filter(function (el) {
-                return el.synonym !== content.displaySource;
-              })).map(function (item) {
+                      return acc.concat(synonymRecordFactory(trans));
+                    }), []).filter(function (el) {
+                  return el.synonym !== content.displaySource;
+                })).map(function (item) {
+            return {
+                    synonym: item.synonym,
+                    confidence: item.confidence < 700 ? 700 + Math.imul(item.confidence, 10) | 0 : item.confidence
+                  };
+          }).map(function (item) {
           return {
                   synonym: item.synonym,
-                  confidence: item.confidence < 700 ? 700 + Math.imul(item.confidence, 10) | 0 : item.confidence
+                  confidence: item.confidence > 4000 ? 4000 + (item.confidence / 10 | 0) | 0 : item.confidence
                 };
         }).map(function (item) {
         return {
                 synonym: item.synonym,
-                confidence: item.confidence > 4000 ? 4000 + (item.confidence / 10 | 0) | 0 : item.confidence
+                confidence: item.confidence > 7000 ? 4000 : item.confidence
               };
       });
   var match = result.length;
