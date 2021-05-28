@@ -45,7 +45,7 @@ function useFetch(word) {
                                       };
                               }));
                 }));
-          request.open("GET", "https://limitless-temple-03902.herokuapp.com/?word=" + word + "&from=en&to=es");
+          request.open("GET", "https://synonyms-api.herokuapp.com/?word=" + word + "&from=en&to=es");
           request.send();
           return (function (param) {
                     request.abort();
