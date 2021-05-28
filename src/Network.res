@@ -39,7 +39,7 @@ let useFetch = (~word) => {
         })
         // request->open_("GET", `http://localhost:8000/?word=${word}&from=en&to=es`)
         // request->open_("GET", `https://cors-anywhere.herokuapp.com/https://limitless-temple-03902.herokuapp.com/?word=${word}&from=en&to=es`)
-        request->open_("GET", `https://limitless-temple-03902.herokuapp.com/?word=${word}&from=en&to=es`)
+        request->open_("GET", `https://synonyms-api.herokuapp.com/?word=${word}&from=en&to=es`)
         request->send
 
         Some(() => {request->abort})
