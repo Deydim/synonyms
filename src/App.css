@@ -8,6 +8,10 @@
 button {
   margin-left: 15px
 }
+
+h5 {
+  font-weight: normal;
+}
 /*
 #root{
   height: 100%;
