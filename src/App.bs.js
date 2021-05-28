@@ -36,19 +36,7 @@ function App$QueryInput(Props) {
                       onChange: onChange
                     }), React.createElement("button", {
                       type: "submit"
-                    }, "Lookup"), React.createElement("p", undefined), "Source Lang", React.createElement("input", {
-                      type: "button",
-                      value: "En"
-                    }), React.createElement("input", {
-                      type: "button",
-                      value: "En"
-                    }), React.createElement("p", undefined), "Target Lang", React.createElement("input", {
-                      type: "button",
-                      value: "En"
-                    }), React.createElement("input", {
-                      type: "button",
-                      value: "En"
-                    })));
+                    }, "Lookup")));
 }
 
 var QueryInput = {
