@@ -70,13 +70,16 @@ tr {
   margin-top: 20px;
   margin-bottom: 20px;
 } */
+div {
+  margin: auto
+}
 .canvas {
   margin: auto;
   display: block;
   position: relative;
   overflow: hidden;
   width: 400px;
-  height: 400px;
+  height: 350px;
   /* background-color: azure; */
 }
 
