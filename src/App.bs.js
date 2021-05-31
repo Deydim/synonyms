@@ -8,13 +8,9 @@ import './App.css';
 ;
 
 function App$QueryInput(Props) {
-  var word = Props.word;
   var setWord = Props.setWord;
-  var match = React.useState(function () {
-        return word;
-      });
-  var setInputValue = match[1];
-  var inputValue = match[0];
+  var inputValue = Props.inputValue;
+  var setInputValue = Props.setInputValue;
   var onSubmit = function (_evt) {
     _evt.preventDefault();
     return Curry._1(setWord, (function (_previousState) {
@@ -47,14 +43,22 @@ function App(Props) {
   var match = React.useState(function () {
         return "";
       });
+  var setWord = match[1];
   var word = match[0];
+  var match$1 = React.useState(function () {
+        return word;
+      });
+  var setInputValue = match$1[1];
   return React.createElement("div", {
               className: "App"
             }, React.createElement(App$QueryInput, {
-                  word: word,
-                  setWord: match[1]
+                  setWord: setWord,
+                  inputValue: match$1[0],
+                  setInputValue: setInputValue
                 }), React.createElement("p", undefined), React.createElement(Fetch$MyRescriptApp.make, {
-                  word: word
+                  word: word,
+                  setWord: setWord,
+                  setInputValue: setInputValue
                 }), React.createElement("p", undefined));
 }
 

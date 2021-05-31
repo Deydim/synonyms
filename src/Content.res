@@ -36,7 +36,7 @@ let combineRepetitions = (arr: array<synonymRecord>): array<synonymRecord> =>
   }, [])
 
 @react.component
-let make = (~content: ResponseSchema.sourceWordDescription) => {
+let make = (~content: ResponseSchema.sourceWordDescription, ~setWord, ~setInputValue) => {
   let result =
     content.translations
     ->reduce((acc, trans) => concat(acc, synonymRecordFactory(trans)), []) // flatten all arrays to one
@@ -49,6 +49,14 @@ let make = (~content: ResponseSchema.sourceWordDescription) => {
   switch result->length {
   | 0 => <div> {React.string("No synonyms found for this word.")} </div>
   | _ => 
-      <Words options={{"list": result->map(item => (item.synonym, item.confidence/50))}}/>   
+      <Words 
+        options={{
+          "list": result->map(item => (item.synonym, item.confidence/50)),
+          "click": ((element, _)) => {
+            setInputValue(_prev=>element)
+            setWord(_prev=>element)
+          },
+        }}
+      />   
   }
 }

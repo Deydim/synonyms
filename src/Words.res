@@ -2,7 +2,7 @@
 %%raw(` import wordCloud from './JSLib/wordcloud2.js';`)
 type document
 
-@val external wordCloud: (Dom.element, {"list": array<(string, int)>}) => unit = "wordCloud"
+@val external wordCloud: (Dom.element, {"list": array<(string, int)>, "click": (('a, 'b)) => 'c}) => unit = "wordCloud"
 @send external getElementById: (document, string) => Dom.element = "getElementById"
 @val external document: document = "document"
 

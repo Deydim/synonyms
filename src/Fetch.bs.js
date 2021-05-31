@@ -7,6 +7,8 @@ import * as Network$MyRescriptApp from "./Network.bs.js";
 
 function Fetch(Props) {
   var word = Props.word;
+  var setWord = Props.setWord;
+  var setInputValue = Props.setInputValue;
   var state = Network$MyRescriptApp.useFetch(word);
   if (typeof state === "number") {
     if (state === /* NotCalled */0) {
@@ -25,7 +27,9 @@ function Fetch(Props) {
         var match = Caml_array.get(synonyms, 0).translations.length;
         if (match !== 0) {
           return React.createElement(Content$MyRescriptApp.make, {
-                      content: Caml_array.get(synonyms, 0)
+                      content: Caml_array.get(synonyms, 0),
+                      setWord: setWord,
+                      setInputValue: setInputValue
                     });
         } else {
           return React.createElement("div", undefined, "No data for this word");

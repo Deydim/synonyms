@@ -1,5 +1,6 @@
 
 
+import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
 import * as Caml_obj from "bs-platform/lib/es6/caml_obj.js";
 import * as Words$MyRescriptApp from "./Words.bs.js";
@@ -46,6 +47,8 @@ function combineRepetitions(arr) {
 
 function Content(Props) {
   var content = Props.content;
+  var setWord = Props.setWord;
+  var setInputValue = Props.setInputValue;
   var result = combineRepetitions(content.translations.reduce((function (acc, trans) {
                       return acc.concat(synonymRecordFactory(trans));
                     }), []).filter(function (el) {
@@ -75,7 +78,16 @@ function Content(Props) {
                                 item.synonym,
                                 item.confidence / 50 | 0
                               ];
-                      })
+                      }),
+                  click: (function (param) {
+                      var element = param[0];
+                      Curry._1(setInputValue, (function (_prev) {
+                              return element;
+                            }));
+                      return Curry._1(setWord, (function (_prev) {
+                                    return element;
+                                  }));
+                    })
                 }
               });
   } else {

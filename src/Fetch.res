@@ -1,5 +1,5 @@
 @react.component
-let make = (~word) => {
+let make = (~word, ~setWord, ~setInputValue) => {
   let state = Network.useFetch(~word)
   switch state {
   | NotCalled => <div> {React.string("Please enter a word. For rich results try something obscene, e.g. the F word :)")} </div>
@@ -11,7 +11,7 @@ let make = (~word) => {
   | Loaded(synonyms) =>
     switch synonyms[0].translations->Js.Array2.length {
     | 0 => <div> {React.string("No data for this word")} </div>
-    | _ => <Content content={synonyms[0]} />
+    | _ => <Content content={synonyms[0]} setWord setInputValue/>
     }
   }
 }

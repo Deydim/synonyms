@@ -3,8 +3,8 @@
 
 module QueryInput = {
   @react.component
-  let make = (~word, ~setWord) => {
-    let (inputValue, setInputValue) = React.useState(() => word)
+  let make = ( ~setWord, ~inputValue, ~setInputValue) => {
+    // let (inputValue, setInputValue) = React.useState(() => word)
     let onSubmit = _evt => {
       ReactEvent.Form.preventDefault(_evt)
       setWord(_previousState => inputValue)
@@ -28,8 +28,9 @@ module QueryInput = {
 
 @react.component
 let make = () => {
+
   let (word, setWord) = React.useState(() => "")
-  <div className="App"> <QueryInput word setWord /> <p /> <Fetch word /> <p /> 
-  // <Words /> 
+  let (inputValue, setInputValue) = React.useState(() => word)
+  <div className="App"> <QueryInput setWord inputValue setInputValue /> <p /> <Fetch word setWord setInputValue /> <p /> 
   </div>
 }
