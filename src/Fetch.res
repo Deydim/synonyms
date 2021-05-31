@@ -2,7 +2,7 @@
 let make = (~word) => {
   let state = Network.useFetch(~word)
   switch state {
-  | NotCalled => <div> {React.string("Please enter word. For rich results try something obscene, e.g. the F word :)")} </div>
+  | NotCalled => <div> {React.string("Please enter a word. For rich results try something obscene, e.g. the F word :)")} </div>
   | Loading => <div> {React.string("Loading...")} </div>
   | Error (err)=> <div> {
     Js.log(err)

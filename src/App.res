@@ -14,9 +14,9 @@ module QueryInput = {
 
     <div className="query-input">
       <h5>
-        {React.string("Just a synonyms' generator at best (and hopefully a semantic cloud at its worst).")}
+        {React.string("Just a synonyms' generator at best (a semantic cloud at its worst).")}
         <br />
-        {React.string("Also, please excuse my 1995 background color :)")}
+        {React.string("Do you fancy my 1995 background color? :)")}
       </h5>
       <form onSubmit>
         <input type_="text" value={inputValue} onChange />
