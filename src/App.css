@@ -1,6 +1,5 @@
  html, body
 {
-  /* height: 100%; */
   text-align: center;
   background-color: azure;
 }
@@ -12,64 +11,7 @@ button {
 h5 {
   font-weight: normal;
 }
-/*
-#root{
-  height: 100%;
-}
 
-.App {
-  height: 100%;
-  background-color: #282c34;
-  display: flex;
-  flex-direction: column;
-  font-size: 10px + calc(2vmin);
-  color: white;  
-}
-
-td {
-  height: 100%;
-  
-  vertical-align: top;
-  text-align: right;
- 
-}
-
-.last {
-  text-align: left;
-}
-
-table {
-  width: fit-content;
-  height: 100%;
-  
-  border-collapse: collapse;
-}
-
-tr {
-  height: 100%;
-}
-
-.svg {
-  width: 20px;
-  height: 50%;
-  overflow: visible;
-}
-
-@media (min-width: 980px) {
-  body { padding-top: 60px; }
-}
-
-*[hidden] {
-  display: none;
-}
-
-#canvas-container {
-  overflow-x: auto;
-  overflow-y: visible;
-  position: relative;
-  margin-top: 20px;
-  margin-bottom: 20px;
-} */
 div {
   margin: auto
 }
@@ -79,82 +21,17 @@ div {
   position: relative;
   overflow: hidden;
   width: 400px;
-  height: 350px;
-  /* background-color: azure; */
-}
-
-/* .canvas.hide {
-  display: none;
-} */
-
-#html-canvas > span {
-  transition: text-shadow 1s ease, opacity 1s ease;
-  -webkit-transition: text-shadow 1s ease, opacity 1s ease;
-  -ms-transition: text-shadow 1s ease, opacity 1s ease;
-  /* background-color: azure; */
-}
-
-#html-canvas > span:hover {
-  text-shadow: 0 0 10px, 0 0 10px #fff, 0 0 10px #fff, 0 0 10px #fff;
-  opacity: 0.5;
-  cursor: pointer;
-}
-
-/* #box {
-  pointer-events: none;
-  position: absolute;
-  box-shadow: 0 0 200px 200px rgba(255, 255, 255, 0.5);
-  border-radius: 50px;
-  cursor: pointer;
-} */
-
-/* textarea {
-  height: 20em;
-}
-#config-option {
-  font-family: monospace;
-}
-select { width: 100%; }
-
-#loading {
-  animation: blink 2s infinite;
-  -webkit-animation: blink 2s infinite;
-}
-@-webkit-keyframes blink {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
-}
-@keyframes blink {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
-} */
-/* 
-#canvas-container {
-  overflow-x: auto;
-  overflow-y: visible;
-  position: relative;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.canvas {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  width: 500px;
-  height: 300px;
-}
-
-.canvas.hide {
-  display: none;
+  height: 400px;
 }
 
 #html-canvas > span {
   transition: text-shadow 1s ease, opacity 1s ease;
   -webkit-transition: text-shadow 1s ease, opacity 1s ease;
   -ms-transition: text-shadow 1s ease, opacity 1s ease;
-}
+ }
 
 #html-canvas > span:hover {
   text-shadow: 0 0 10px, 0 0 10px #fff, 0 0 10px #fff, 0 0 10px #fff;
   opacity: 0.5;
-} */
+  cursor: pointer;
+}

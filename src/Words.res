@@ -1,4 +1,3 @@
-// let a = %%raw(`console.log(getElementById("myCanvas"))`)
 %%raw(` import wordCloud from './JSLib/wordcloud2.js';`)
 type document
 

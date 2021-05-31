@@ -37,7 +37,6 @@ let useFetch = (~word) => {
         request->addEventListener("error", err => {
           setState(_previousState => Error(err))
         })
-        // request->open_("GET", `http://localhost:8000/?word=${word}&from=en&to=es`)
         request->open_("GET", `https://synonyms-api.herokuapp.com/?word=${word}&from=en&to=es`)
         request->send
 

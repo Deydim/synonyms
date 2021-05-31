@@ -43,7 +43,7 @@ let make = (~content: ResponseSchema.sourceWordDescription, ~setWord, ~setInputV
     ->filter(el => el.synonym != content.displaySource) // removes source word from data array
     ->combineRepetitions
     ->map(item => {...item, confidence: (item.confidence < 700 ? 700 + item.confidence * 10 : item.confidence)}) //set minimum font size
-    ->map(item => {...item, confidence: (item.confidence > 4000 ? 4000 + item.confidence/10 : item.confidence)}) //set maximum font size
+    ->map(item => {...item, confidence: (item.confidence > 4000 ? 4000 + item.confidence/10 : item.confidence)}) //set minimum font size
     ->map(item => {...item, confidence: (item.confidence > 7000 ? 4000 : item.confidence)}) //set maximum font size
     
   switch result->length {

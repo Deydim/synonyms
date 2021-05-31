@@ -4,7 +4,6 @@
 module QueryInput = {
   @react.component
   let make = ( ~setWord, ~inputValue, ~setInputValue) => {
-    // let (inputValue, setInputValue) = React.useState(() => word)
     let onSubmit = _evt => {
       ReactEvent.Form.preventDefault(_evt)
       setWord(_previousState => inputValue)
@@ -13,11 +12,6 @@ module QueryInput = {
     let onChange = _evt => setInputValue(_previousState => ReactEvent.Form.target(_evt)["value"])
 
     <div className="query-input">
-      // <h5>
-      //   {React.string("Just a synonyms' generator at best (a semantic cloud at its worst).")}
-      //   <br />
-      //   {React.string("Do you fancy my 1995 background color? :)")}
-      // </h5>
       <br/>
       <div>{React.string("Welcome to my synonyms' generator in the fanciest 1995 background color :)")}</div>
       <br/>
