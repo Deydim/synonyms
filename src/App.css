@@ -13,7 +13,8 @@ h5 {
 }
 
 div {
-  margin: auto
+  margin: auto;
+  line-height: 30px;
 }
 .canvas {
   margin: auto;

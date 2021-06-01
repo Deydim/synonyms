@@ -47,7 +47,7 @@ let make = (~content: ResponseSchema.sourceWordDescription, ~setWord, ~setInputV
     ->map(item => {...item, confidence: (item.confidence > 7000 ? 4000 : item.confidence)}) //set maximum font size
     
   switch result->length {
-  | 0 => <div> {React.string("No synonyms found for this word.")} </div>
+  | 0 => <> {React.string("No synonyms found for this word.")} </>
   | _ => 
       <Words 
         options={{

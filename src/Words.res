@@ -15,8 +15,8 @@ let make = (~options) => {
     None
   })
   
-  <div> 
-    <div>{React.string("...or you might as well click on a word.")}</div>
+  <> 
+    {React.string("...or you might as well click on a word.")}
     <div id="html-canvas" className="canvas" /> 
-  </div>
+  </>
 }

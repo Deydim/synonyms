@@ -91,7 +91,7 @@ function Content(Props) {
                 }
               });
   } else {
-    return React.createElement("div", undefined, "No synonyms found for this word.");
+    return React.createElement(React.Fragment, undefined, "No synonyms found for this word.");
   }
 }
 

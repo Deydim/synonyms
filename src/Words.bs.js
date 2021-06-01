@@ -11,7 +11,7 @@ function Words(Props) {
           wordCloud(document.getElementById("html-canvas"), options);
           
         }), []);
-  return React.createElement("div", undefined, React.createElement("div", undefined, "...or you might as well click on a word."), React.createElement("div", {
+  return React.createElement(React.Fragment, undefined, "...or you might as well click on a word.", React.createElement("div", {
                   className: "canvas",
                   id: "html-canvas"
                 }));

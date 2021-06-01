@@ -22,9 +22,7 @@ function App$QueryInput(Props) {
                   return _evt.target.value;
                 }));
   };
-  return React.createElement("div", {
-              className: "query-input"
-            }, React.createElement("br", undefined), React.createElement("div", undefined, "Welcome to my synonyms' generator in the fanciest 1995 background color :)"), React.createElement("br", undefined), React.createElement("form", {
+  return React.createElement(React.Fragment, undefined, "Welcome to my synonyms' generator in the fanciest 1995 background color :)", React.createElement("form", {
                   onSubmit: onSubmit
                 }, React.createElement("input", {
                       type: "text",
@@ -49,17 +47,15 @@ function App(Props) {
         return word;
       });
   var setInputValue = match$1[1];
-  return React.createElement("div", {
-              className: "App"
-            }, React.createElement(App$QueryInput, {
+  return React.createElement(React.Fragment, undefined, React.createElement(App$QueryInput, {
                   setWord: setWord,
                   inputValue: match$1[0],
                   setInputValue: setInputValue
-                }), React.createElement("p", undefined), React.createElement(Fetch$MyRescriptApp.make, {
+                }), React.createElement(Fetch$MyRescriptApp.make, {
                   word: word,
                   setWord: setWord,
                   setInputValue: setInputValue
-                }), React.createElement("p", undefined));
+                }));
 }
 
 var make = App;
