@@ -4,12 +4,12 @@
 module QueryInput = {
   @react.component
   let make = (~setWord, ~inputValue, ~setInputValue) => {
-    let onSubmit = _evt => {
-      ReactEvent.Form.preventDefault(_evt)
+    let onSubmit = evt => {
+      ReactEvent.Form.preventDefault(evt)
       setWord(_previousState => inputValue)
     }
 
-    let onChange = _evt => setInputValue(_previousState => ReactEvent.Form.target(_evt)["value"])
+    let onChange = evt => setInputValue(_previousState => ReactEvent.Form.target(evt)["value"])
 
     <>
       {React.string("Welcome to my synonyms' generator in the fanciest 1995 background color :)")}

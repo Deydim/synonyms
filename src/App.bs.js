@@ -11,15 +11,15 @@ function App$QueryInput(Props) {
   var setWord = Props.setWord;
   var inputValue = Props.inputValue;
   var setInputValue = Props.setInputValue;
-  var onSubmit = function (_evt) {
-    _evt.preventDefault();
+  var onSubmit = function (evt) {
+    evt.preventDefault();
     return Curry._1(setWord, (function (_previousState) {
                   return inputValue;
                 }));
   };
-  var onChange = function (_evt) {
+  var onChange = function (evt) {
     return Curry._1(setInputValue, (function (_previousState) {
-                  return _evt.target.value;
+                  return evt.target.value;
                 }));
   };
   return React.createElement(React.Fragment, undefined, "Welcome to my synonyms' generator in the fanciest 1995 background color :)", React.createElement("form", {
