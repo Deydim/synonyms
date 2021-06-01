@@ -1,38 +1,38 @@
- html, body
-{
-  text-align: center;
-  background-color: azure;
-}
-
-button {
-  margin-left: 15px
-}
-
-h5 {
-  font-weight: normal;
-}
-
-div {
-  margin: auto;
-  line-height: 30px;
-}
-.canvas {
-  margin: auto;
-  display: block;
-  position: relative;
-  overflow: hidden;
-  width: 400px;
-  height: 400px;
-}
-
-#html-canvas > span {
-  transition: text-shadow 1s ease, opacity 1s ease;
-  -webkit-transition: text-shadow 1s ease, opacity 1s ease;
-  -ms-transition: text-shadow 1s ease, opacity 1s ease;
+ html, body {
+   text-align: center;
+   background-color: azure;
  }
 
-#html-canvas > span:hover {
-  text-shadow: 0 0 10px, 0 0 10px #fff, 0 0 10px #fff, 0 0 10px #fff;
-  opacity: 0.5;
-  cursor: pointer;
-}
+ button {
+   margin-left: 15px
+ }
+
+ h5 {
+   font-weight: normal;
+ }
+
+ div {
+   margin: auto;
+   line-height: 30px;
+ }
+
+ .canvas {
+   margin: auto;
+   display: block;
+   position: relative;
+   overflow: hidden;
+   width: 400px;
+   height: 400px;
+ }
+
+ #html-canvas>span {
+   transition: text-shadow 1s ease, opacity 1s ease;
+   -webkit-transition: text-shadow 1s ease, opacity 1s ease;
+   -ms-transition: text-shadow 1s ease, opacity 1s ease;
+ }
+
+ #html-canvas>span:hover {
+   text-shadow: 0 0 10px, 0 0 10px #fff, 0 0 10px #fff, 0 0 10px #fff;
+   opacity: 0.5;
+   cursor: pointer;
+ }
