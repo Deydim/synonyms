@@ -58,7 +58,7 @@ let make = (~content: ResponseSchema.sourceWordDescription, ~setWord, ~setInputV
     <Words
       options={{
         "list": result->map(item => (item.synonym, item.confidence / 50)),
-        "click": ((element, _)) => {
+        "click": ((element, _confidence), _coords, _evt) => {
           setInputValue(_prev => element)
           setWord(_prev => element)
         },

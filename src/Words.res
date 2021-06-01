@@ -4,7 +4,7 @@ type document
 @val
 external wordCloud: (
   Dom.element,
-  {"list": array<(string, int)>, "click": (('a, 'b)) => 'c},
+  {"list": array<(string, int)>, "click": ('a, 'b, 'c) => 'd},
 ) => unit = "wordCloud"
 @send external getElementById: (document, string) => Dom.element = "getElementById"
 @val external document: document = "document"

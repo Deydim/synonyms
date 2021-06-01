@@ -79,7 +79,7 @@ function Content(Props) {
                                 item.confidence / 50 | 0
                               ];
                       }),
-                  click: (function (param) {
+                  click: (function (param, _coords, _evt) {
                       var element = param[0];
                       Curry._1(setInputValue, (function (_prev) {
                               return element;
