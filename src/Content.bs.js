@@ -49,7 +49,7 @@ function Content(Props) {
   var content = Props.content;
   var setWord = Props.setWord;
   var setInputValue = Props.setInputValue;
-  var result = combineRepetitions(content.translations.reduce((function (acc, trans) {
+  var arr = combineRepetitions(content.translations.reduce((function (acc, trans) {
                       return acc.concat(synonymRecordFactory(trans));
                     }), []).filter(function (el) {
                   return el.synonym !== content.displaySource;
@@ -69,11 +69,10 @@ function Content(Props) {
                 confidence: item.confidence > 7000 ? 4000 : item.confidence
               };
       });
-  var match = result.length;
-  if (match !== 0) {
+  if (arr.length !== 0) {
     return React.createElement(Words$MyRescriptApp.make, {
                 options: {
-                  list: result.map(function (item) {
+                  list: arr.map(function (item) {
                         return [
                                 item.synonym,
                                 item.confidence / 50 | 0
