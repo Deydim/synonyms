@@ -1,16 +1,6 @@
-let trace = (el, text) => {
-  Js.log2(text, el)
-  el
-}
-
 type synonymRecord = {
   synonym: string,
   confidence: int,
-}
-
-let emptyTrans: ResponseSchema.translation = {
-  confidence: 0.,
-  backTranslations: [],
 }
 
 open Js.Array2
@@ -26,13 +16,15 @@ let synonymRecordFactory = (trans: ResponseSchema.translation) => {
 }
 
 let combineRepetitions = (arr: array<synonymRecord>): array<synonymRecord> =>
-  arr->reduce((acc, item) => {
-    let combinedConfidence =
-      filter(arr, item2 => item2.synonym == item.synonym)->reduce(
+  arr
+  ->reduce((acc, item) => {
+      arr
+      ->filter(item2 => item2.synonym == item.synonym)  //remove synonym repetitions
+      ->reduce(                                         //add up confidence of repetitions
         (acc, item) => {...item, confidence: acc.confidence + item.confidence},
         {...item, confidence: 0},
       )
-    acc->concat(acc->some(item => item == combinedConfidence) ? [] : [combinedConfidence])
+      ->combined => acc->concat (acc->some(item => item == combined) ? [] : [combined]) //avoid repetitions in the new array while iterating the old one
   }, [])
 
 @react.component

@@ -5,18 +5,6 @@ import * as React from "react";
 import * as Caml_obj from "bs-platform/lib/es6/caml_obj.js";
 import * as Words$MyRescriptApp from "./Words.bs.js";
 
-function trace(el, text) {
-  console.log(text, el);
-  return el;
-}
-
-var emptyTrans_backTranslations = [];
-
-var emptyTrans = {
-  confidence: 0,
-  backTranslations: emptyTrans_backTranslations
-};
-
 function synonymRecordFactory(trans) {
   return trans.backTranslations.map(function (backTrans) {
               return {
@@ -28,7 +16,7 @@ function synonymRecordFactory(trans) {
 
 function combineRepetitions(arr) {
   return arr.reduce((function (acc, item) {
-                var combinedConfidence = arr.filter(function (item2) {
+                var combined = arr.filter(function (item2) {
                         return item2.synonym === item.synonym;
                       }).reduce((function (acc, item) {
                         return {
@@ -40,8 +28,8 @@ function combineRepetitions(arr) {
                       confidence: 0
                     });
                 return acc.concat(acc.some(function (item) {
-                                return Caml_obj.caml_equal(item, combinedConfidence);
-                              }) ? [] : [combinedConfidence]);
+                                return Caml_obj.caml_equal(item, combined);
+                              }) ? [] : [combined]);
               }), []);
 }
 
@@ -97,8 +85,6 @@ function Content(Props) {
 var make = Content;
 
 export {
-  trace ,
-  emptyTrans ,
   synonymRecordFactory ,
   combineRepetitions ,
   make ,
