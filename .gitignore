@@ -31,3 +31,7 @@ yarn-error.log*
 
 # ESLint
 .eslintcache
+
+#IDEs
+.vim
+.vscode
