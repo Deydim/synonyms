@@ -6,7 +6,7 @@ exports.lookupRequest = ([word, from, to]) => {
     method: 'POST',
     headers: {
       'Ocp-Apim-Subscription-Region': 'westeurope',
-      'Ocp-Apim-Subscription-Key': 'MY-KEY',
+      'Ocp-Apim-Subscription-Key': 'MY-KEY-HIDDEN',
       'Content-type': 'application/json',
       'X-ClientTraceId': crypto.randomBytes(16).toString("hex")
     },
