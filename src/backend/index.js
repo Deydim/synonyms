@@ -3,10 +3,10 @@ const axios = require('axios');
 const { URL } = require('url');
 const { lookupRequest } = require('./lookup');
 
-// const host = '0.0.0.0';
-// const port = process.env.PORT;
-const port = 8000;
-const host = "localhost";
+const host = '0.0.0.0';
+const port = process.env.PORT;
+// const port = 8000;
+// const host = "localhost";
 
 const requestListener = async (request, response) => {
   response.setHeader('Access-Control-Allow-Origin', '*');
