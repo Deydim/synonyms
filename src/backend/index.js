@@ -10,9 +10,9 @@ const port = process.env.PORT;
 
 const requestListener = async (request, response) => {
   response.setHeader('Access-Control-Allow-Origin', '*');
-	response.setHeader('Access-Control-Request-Method', '*');
-	response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
-	response.setHeader('Access-Control-Allow-Headers', '*');
+  response.setHeader('Access-Control-Request-Method', '*');
+  response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+  response.setHeader('Access-Control-Allow-Headers', '*');
   response.setHeader('Content-Type', 'application/json; charset=utf-8');
   response.writeHead(200);
   const url = new URL ("http://" + request.headers.host + request.url);
