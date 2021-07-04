@@ -24,8 +24,8 @@ function Fetch(Props) {
         return React.createElement(React.Fragment, undefined, state._0);
     case /* Loaded */2 :
         var synonyms = state._0;
-        var match = Caml_array.get(synonyms, 0).translations.length;
-        if (match !== 0) {
+        var match = Caml_array.get(synonyms, 0).translations;
+        if (match.length !== 0) {
           return React.createElement(Content$MyRescriptApp.make, {
                       content: Caml_array.get(synonyms, 0),
                       setWord: setWord,

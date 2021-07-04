@@ -16,8 +16,8 @@ let make = (~word, ~setWord, ~setInputValue) => {
     </>
   | BadRequest(error) => <> {React.string(error)} </>
   | Loaded(synonyms) =>
-    switch synonyms[0].translations->Js.Array2.length {
-    | 0 => <> {React.string("No data for this word")} </>
+    switch synonyms[0].translations {
+    | [] => <> {React.string("No data for this word")} </>
     | _ => <Content content={synonyms[0]} setWord setInputValue />
     }
   }
